@@ -20,11 +20,18 @@ export async function request({ method = 'get', url= '', data = null }) {
         })
 
         if(rst.statusCode !== 200) {
+            if(rst.statusCode === 401) {
+                store.commit('auth/logout');
+                uni.reLaunch({
+                    url: 'login'
+                })
+            }
+
             throw rst
         }
     }
-    catch(e) {
-        rst = Promise.reject(e);
+    catch(error) {
+        throw error
     }
 
     return rst

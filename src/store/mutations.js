@@ -1,4 +1,4 @@
 export default {
-    // name: (state, payload) => {
-    // }
-}
+  // name: (state, payload) => {
+  // }
+};

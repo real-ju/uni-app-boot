@@ -1,4 +1,4 @@
 export default {
-    // name: (state, getters) => {
-    // }
-}
+  // name: (state, getters) => {
+  // }
+};

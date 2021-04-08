@@ -1,20 +1,33 @@
-import { createStore } from 'vuex'
-import getters from './getters'
-import mutations from './mutations'
-import modules from './modules'
-import createPersistedState from "vuex-persistedstate"
+import Vue from 'vue';
+import Vuex from 'vuex';
+import getters from './getters';
+import mutations from './mutations';
+import modules from './modules';
+import createPersistedState from 'vuex-persistedstate';
 
-const state = {
-}
+Vue.use(Vuex);
+
+const state = {};
 
 const PersistedState = createPersistedState({
-    paths: ['auth']
-})
+  paths: ['auth'],
+  storage: {
+    getItem: key => {
+      return uni.getStorageSync(key);
+    },
+    setItem: (key, value) => {
+      uni.setStorageSync(key, value);
+    },
+    removeItem: key => {
+      uni.removeStorageSync(key);
+    }
+  }
+});
 
-export default createStore({
-    state,
-    getters,
-    mutations,
-    modules,
-    plugins: [PersistedState]
-})
+export default new Vuex.Store({
+  state,
+  getters,
+  mutations,
+  modules,
+  plugins: [PersistedState]
+});

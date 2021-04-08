@@ -1,15 +1,14 @@
 // 自定义验证器
 
 export default {
-    arrNotEmpty
-}
+  arrNotEmpty
+};
 
 // 判断数组不为空
 function arrNotEmpty(value) {
-    if(value instanceof Array) {
-        return value.length != 0
-    }
-    else {
-        return false
-    }
+  if (value instanceof Array) {
+    return value.length != 0;
+  } else {
+    return false;
+  }
 }

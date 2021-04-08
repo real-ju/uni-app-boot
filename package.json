@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "npm run dev:h5",
-    "build": "npm run build:h5",
+    "build": "npm run lint & npm run build:h5",
     "lint": "eslint src/**",
     "build:app-plus": "cross-env NODE_ENV=production UNI_PLATFORM=app-plus vue-cli-service uni-build",
     "build:custom": "cross-env NODE_ENV=production uniapp-cli custom",
@@ -63,7 +63,8 @@
     "flyio": "^0.6.2",
     "regenerator-runtime": "^0.12.1",
     "vue": "^2.6.11",
-    "vuex": "^3.2.0"
+    "vuex": "^3.2.0",
+    "vuex-persistedstate": "^4.0.0-beta.3"
   },
   "devDependencies": {
     "@babel/runtime": "~7.12.0",

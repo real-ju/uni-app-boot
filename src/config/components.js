@@ -1,8 +1,8 @@
 // Vue全局组件
-import xxx from '@/components/xxx'
+import xxx from '@/components/xxx';
 
 function regComponents(app) {
-    app.component('xxx', xxx);
+  app.component('xxx', xxx);
 }
 
-export default regComponents
+export default regComponents;

@@ -5,8 +5,10 @@ import store from './store';
 
 import api from '@/lib/api/plugin';
 import boot from './config/boot';
+import uView from 'uview-ui';
 
 Vue.use(api);
+Vue.use(uView);
 // components.reg();
 
 boot.configVue();

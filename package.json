@@ -61,7 +61,9 @@
     "@vue/shared": "^3.0.0",
     "core-js": "^3.6.5",
     "flyio": "^0.6.2",
+    "moment": "^2.29.1",
     "regenerator-runtime": "^0.12.1",
+    "uview-ui": "^1.8.4",
     "vue": "^2.6.11",
     "vuex": "^3.2.0",
     "vuex-persistedstate": "^4.0.0-beta.3"

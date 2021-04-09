@@ -17,6 +17,8 @@ view {
   box-sizing: border-box;
 }
 
+@import 'uview-ui/index.scss';
+
 page {
   width: 100%;
   height: 100%;

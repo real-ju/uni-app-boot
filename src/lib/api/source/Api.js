@@ -1,4 +1,4 @@
-import { rq } from '@/config/requester';
+import { request as rq } from '@/config/requester';
 
 class Api {
   constructor(options) {

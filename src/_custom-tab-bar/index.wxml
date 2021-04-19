@@ -1,0 +1,8 @@
+<cover-view class="tab-bar">
+  <cover-view class="tab-bar-item" wx:for="{{ list }}" wx:key="index" data-path="{{item.pagePath}}" data-index="{{index}}" bind:tap="switchTab">
+    <cover-image class="icon" src="{{ selected === index ? item.selectedIcon : item.icon }}"></cover-image>
+    <cover-view class="{{ selected === index ? 'text text-selected' : 'text' }}">
+      {{ item.text }}
+    </cover-view>
+  </cover-view>
+</cover-view>

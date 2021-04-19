@@ -9,7 +9,7 @@ class Api {
       get: false,
       post: false,
       put: false,
-      delete: false
+      delete: false,
     };
     this.reqData = null; // 每次请求的数据
     this.res = null; // 每次响应的数据
@@ -54,7 +54,7 @@ class Api {
 
     return {
       appendUrl,
-      data
+      data,
     };
   }
 
@@ -77,16 +77,16 @@ class Api {
         method,
         url,
         data,
-        public: this.public
+        public: this.public,
       })
-        .then(res => {
+        .then((res) => {
           this.res = res.data;
           this.loading[method] = false;
           resolve(res.data);
         })
-        .catch(error => {
+        .catch((error) => {
           this.loading[method] = false;
-          reject(error.response);
+          reject(error);
         });
     });
   }

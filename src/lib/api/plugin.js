@@ -5,13 +5,13 @@ import apis from './reg';
  * @param {*} Vue
  * @param {Object} options
  */
-const install = function(Vue) {
+const install = function (Vue) {
   Vue.mixin({
     data() {
       return {
-        Api: apis
+        Api: apis,
       };
-    }
+    },
   });
 };
 

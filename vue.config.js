@@ -5,6 +5,15 @@ module.exports = {
     config.resolve.alias.set('@c', resolvePath('src/components'));
     // .set('@modal', resolvePath('src/views'))
   }
+  // devServer: {
+  //   proxy: {
+  //     '/api': {
+  //       target: process.env.VUE_APP_devServerProxy,
+  //       pathRewrite: { '^/api': '' },
+  //       changeOrigin: true
+  //     }
+  //   }
+  // }
   // lintOnSave: true
 };
 

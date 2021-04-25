@@ -13,15 +13,19 @@ export default {
 </script>
 
 <style lang="scss">
-view {
+@import 'uview-ui/index.scss';
+
+view,
+scroll-view,
+cover-view {
   box-sizing: border-box;
 }
-
-@import 'uview-ui/index.scss';
 
 page {
   width: 100%;
   height: 100%;
   overflow-y: auto;
+  font-size: 30rpx;
+  color: #333333;
 }
 </style>

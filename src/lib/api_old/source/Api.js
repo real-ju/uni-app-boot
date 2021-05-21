@@ -2,36 +2,20 @@ import { request as rq } from '@/config/requester';
 
 class Api {
   constructor(options) {
-    // this.name = options.name;
+    this.name = options.name;
     this.url = options.url;
-    this.method = options.method;
     this.public = options.public || false;
-
-    let loading = null;
-    if (Api.mode === 'common') {
-      loading = false;
-    } else if (Api.mode === 'restful') {
-      loading = {
-        get: false,
-        post: false,
-        put: false,
-        delete: false
-      };
-    }
-    this.loading = loading;
-
+    this.loading = {
+      get: false,
+      post: false,
+      put: false,
+      delete: false,
+    };
     this.reqData = null; // 每次请求的数据
     this.res = null; // 每次响应的数据
   }
 
-  // 普通模式下发起请求
-  do(...args) {
-    let { appendUrl, data } = this._handleRequestParams(args);
-
-    return this.request(appendUrl, this.method, data);
-  }
-
-  // Restful模式下发起get请求
+  // 发起get请求
   get(...args) {
     let { appendUrl, data } = this._handleRequestParams(args);
 
@@ -70,12 +54,11 @@ class Api {
 
     return {
       appendUrl,
-      data
+      data,
     };
   }
 
   request(append = null, method = 'get', data = null) {
-    Object.freeze(data);
     this.reqData = data;
 
     if (method === 'get') {
@@ -87,46 +70,30 @@ class Api {
     let url = append ? this.url + append : this.url;
 
     return new Promise((resolve, reject) => {
-      this._setLoading(true, method);
+      this.loading[method] = true;
       this.res = null;
 
       rq({
         method,
         url,
         data,
-        public: this.public
+        public: this.public,
       })
-        .then(res => {
-          Object.freeze(res.data);
+        .then((res) => {
           this.res = res.data;
+          this.loading[method] = false;
           resolve(res.data);
         })
-        .catch(error => {
+        .catch((error) => {
+          this.loading[method] = false;
           reject(error);
-        })
-        .finally(() => {
-          this._setLoading(false, method);
         });
     });
-  }
-
-  _setLoading(value, method) {
-    if (Api.mode === 'common') {
-      this.loading = value;
-    } else if (Api.mode === 'restful') {
-      this.loading[method] = value;
-    }
   }
 
   setUrl(url = '') {
     this.url = url;
   }
-
-  static _setApiMode(value) {
-    Api.mode = value;
-  }
 }
-
-Api.mode = ''; // 可选 common,restful
 
 export default Api;

@@ -13,15 +13,19 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module'
   },
-  plugins: [
-    'prettier'
-  ],
+  plugins: ['prettier'],
   rules: {
-    'prettier/prettier': ['error'],
+    'prettier/prettier': [
+      'error',
+      {
+        endOfLine: 'auto'
+      }
+    ],
     'no-unused-vars': ['off'],
+    'no-undef': ['off']
   },
   globals: {
     process: false,
-    uni: false,
+    uni: false
   }
 };

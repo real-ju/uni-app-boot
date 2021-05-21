@@ -1,5 +1,8 @@
 {
   "window.zoomLevel": 1,
   "editor.formatOnSave": true,
-  "editor.tabSize": 2
+  "editor.tabSize": 2,
+  "vetur.validation.script": false,
+  "vetur.validation.template": false,
+  "vetur.validation.style": false
 }

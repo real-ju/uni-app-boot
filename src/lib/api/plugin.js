@@ -7,14 +7,7 @@ import Api from './source/Api';
  */
 const install = function (Vue, options = {}) {
   Api._setApiMode(options.mode || 'common');
-
-  Vue.mixin({
-    data() {
-      return {
-        Api: require('./reg').default,
-      };
-    },
-  });
+  Vue.prototype.$api = require('./reg').default;
 };
 
 export default { install };

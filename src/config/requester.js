@@ -11,7 +11,7 @@ export async function request({
   let header = {};
 
   if (!pb) {
-    header['3RD_SESSION'] = store.getters['auth/token'];
+    header['Token'] = store.getters['auth/token'];
   }
 
   method = method.toUpperCase();

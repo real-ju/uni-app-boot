@@ -16,10 +16,10 @@ module.exports = {
   plugins: ['prettier'],
   rules: {
     'prettier/prettier': [
-      'error',
-      {
-        endOfLine: 'auto'
-      }
+      'error'
+      // {
+      //   endOfLine: 'auto'
+      // }
     ],
     'no-unused-vars': ['off'],
     'no-undef': ['off']

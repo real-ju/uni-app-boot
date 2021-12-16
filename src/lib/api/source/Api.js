@@ -2,8 +2,14 @@ import { request as rq } from '@/config/requester';
 
 class Api {
   constructor(options) {
+    if (Api.mode === 'common') {
+      if (!options.method) {
+        throw '普通模式需要指定method参数'
+      }
+    }
+
     this.url = options.url;
-    this.method = options.method;
+    this.method = options.method || null;
     this.public = options.public || false;
 
     this.reqData = null; // 每次请求的数据
@@ -62,7 +68,9 @@ class Api {
 
   request(append = null, method = 'get', data = null) {
     this.reqData = data;
+    this.res = null;
 
+    // 构建axios参数data
     if (method === 'get') {
       data = { params: data };
     } else if (method === 'delete') {
@@ -72,8 +80,6 @@ class Api {
     let url = append ? this.url + append : this.url;
 
     return new Promise((resolve, reject) => {
-      this.res = null;
-
       rq({
         method,
         url,

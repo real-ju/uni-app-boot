@@ -2,6 +2,7 @@
   "window.zoomLevel": 1,
   "editor.formatOnSave": true,
   "editor.tabSize": 2,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "vetur.validation.script": false,
   "vetur.validation.template": false,
   "vetur.validation.style": false

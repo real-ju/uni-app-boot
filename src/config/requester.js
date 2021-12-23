@@ -5,7 +5,7 @@ export async function request({
   method = 'get',
   url = '',
   data = null,
-  public: pb = false,
+  public: pb = false
 }) {
   let rst = null;
   let header = {};
@@ -15,14 +15,19 @@ export async function request({
   }
 
   method = method.toUpperCase();
-  url = process.env.VUE_APP_apiBaseURL + url;
+
+  let apiBaseURL = process.env.VUE_APP_apiBaseURL;
+  // #ifdef H5
+  apiBaseURL = '/api/';
+  // #endif
+  url = apiBaseURL + url;
 
   try {
     let [error, res] = await uni.request({
       method,
       url,
       data,
-      header,
+      header
     });
 
     if (error) {
@@ -34,7 +39,7 @@ export async function request({
         if (rst.statusCode === 401) {
           store.commit('auth/logout');
           uni.reLaunch({
-            url: 'login',
+            url: 'login'
           });
         }
 

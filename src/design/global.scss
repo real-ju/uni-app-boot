@@ -1,0 +1,31 @@
+/* 全局 */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  font-family: 'FangZhengLanTing';
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+  min-width: 1250px; // 常见电脑分辨率最小宽度 1280
+  min-height: 750px; // 常见电脑分辨率最小高度 768
+  position: relative;
+  overflow: hidden;
+}

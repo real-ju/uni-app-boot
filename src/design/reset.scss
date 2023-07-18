@@ -1,0 +1,29 @@
+/* CSS Reset */
+a {
+  color: unset;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+h1 {
+  font-weight: normal;
+}
+
+ul {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+}
+
+i {
+  font-style: normal;
+}
+
+button {
+  font-family: unset;
+  background-color: unset;
+  border: unset;
+  padding: unset;
+}

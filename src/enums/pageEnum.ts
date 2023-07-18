@@ -3,9 +3,9 @@
  */
 export enum BasicPageEnum {
   // 登录
-  LOGIN = '/login',
+  LOGIN = '/pages/login/index',
   // 首页
-  HOME = '/dashboard'
+  HOME = '/pages/index/index'
 }
 
 /**

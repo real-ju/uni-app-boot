@@ -1,6 +1,6 @@
 import type { UserConfig, ConfigEnv } from 'vite';
-import uni from '@dcloudio/vite-plugin-uni';
 import { loadEnv } from 'vite';
+import { createVitePlugins } from './build/vite/plugin';
 import { wrapEnv, pathResolve } from './build/utils';
 
 // https://vitejs.dev/config/
@@ -21,7 +21,7 @@ export default ({ mode }: ConfigEnv): UserConfig => {
         }
       ]
     },
-    plugins: [uni()],
+    plugins: createVitePlugins(viteEnv),
     server: {
       host: true,
       proxy: {

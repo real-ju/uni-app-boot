@@ -1,4 +1,4 @@
-import { ProjectSetting } from '#/config';
+import type { ProjectSetting } from '#/config';
 
 const setting: ProjectSetting = {};
 

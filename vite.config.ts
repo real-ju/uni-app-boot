@@ -1,7 +1,7 @@
-import type { UserConfig, ConfigEnv } from "vite";
-import uni from "@dcloudio/vite-plugin-uni";
-import { loadEnv } from "vite";
-import { wrapEnv, pathResolve } from "./build/utils";
+import type { UserConfig, ConfigEnv } from 'vite';
+import uni from '@dcloudio/vite-plugin-uni';
+import { loadEnv } from 'vite';
+import { wrapEnv, pathResolve } from './build/utils';
 
 // https://vitejs.dev/config/
 export default ({ mode }: ConfigEnv): UserConfig => {
@@ -17,20 +17,20 @@ export default ({ mode }: ConfigEnv): UserConfig => {
         // #/xxxx => /types/xxxx
         {
           find: /#\//,
-          replacement: pathResolve("types") + "/",
-        },
-      ],
+          replacement: pathResolve('types') + '/'
+        }
+      ]
     },
     plugins: [uni()],
     server: {
       host: true,
       proxy: {
-        "/api": {
+        '/api': {
           target: viteEnv.VITE_DEV_SERVER_PROXY,
           changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, ""),
-        },
-      },
-    },
+          rewrite: (path) => path.replace(/^\/api/, '')
+        }
+      }
+    }
   };
 };

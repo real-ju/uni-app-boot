@@ -2,37 +2,33 @@
   <text :class="fontClass"></text>
 </template>
 
-<script>
+<script setup lang="ts" name="BeIcon">
 /**
  * 阿里iconfont https://www.iconfont.cn/help/detail?spm=a313x.7781069.1998910419.d8d11a391&helptype=code
  *
- * 请自行在全局引入FontClass css文件
+ * font-class 引用方式，请自行在全局引入FontClass css文件
  */
-export default {
-  name: "BeIcon",
-  props: {
-    fontFamily: {
-      // Font Family
-      type: String,
-      default: "iconfont",
-    },
-    prefix: {
-      // FontClass 前缀
-      type: String,
-      default: "icon-",
-    },
-    name: {
-      // FontClass 名
-      type: String,
-      default: "",
-    },
+const props = defineProps({
+  fontFamily: {
+    // Font Family
+    type: String,
+    default: 'iconfont'
   },
-  computed: {
-    fontClass() {
-      return this.fontFamily + " " + this.prefix + this.name;
-    },
+  prefix: {
+    // FontClass 前缀
+    type: String,
+    default: 'icon-'
   },
-};
+  name: {
+    // FontClass 名
+    type: String,
+    default: ''
+  }
+});
+
+const fontClass = computed(() => {
+  return props.fontFamily + ' ' + props.prefix + props.name;
+});
 </script>
 
 <style lang="scss" scoped>

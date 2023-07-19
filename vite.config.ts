@@ -23,7 +23,8 @@ export default ({ mode }: ConfigEnv): UserConfig => {
     },
     plugins: createVitePlugins(viteEnv),
     server: {
-      host: true,
+      // host: true,
+      host: '0.0.0.0',
       proxy: {
         '/api': {
           target: viteEnv.VITE_DEV_SERVER_PROXY,

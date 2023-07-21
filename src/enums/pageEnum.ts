@@ -5,7 +5,7 @@ export enum BasicPageEnum {
   // 登录
   LOGIN = '/pages/login/index',
   // 首页
-  HOME = '/pages/index/index'
+  HOME = '/pages/plan/index'
 }
 
 /**

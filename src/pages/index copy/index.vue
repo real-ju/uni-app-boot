@@ -1,5 +1,5 @@
 <template>
-  <be-app-page class="index-page" showNavbar title="首页">
+  <be-app-page class="index-page">
     <view class="test-map" id="test-map"></view>
   </be-app-page>
 </template>
@@ -12,7 +12,7 @@ const mainShipCo = [30.73833, 111.276];
 const initMap = () => {
   const map = new ShipxyAPI.Map('test-map', {
     ak: '559efdd41f4c40d6bd14fbdb6bf88be5',
-    // centerPoint: [30.73833, 111.27472],
+    defaultMapType: 'MT_SATELLITE',
     centerPoint: mainShipCo,
     zoom: 12,
     // rotate: true,
@@ -95,8 +95,6 @@ const initMap = () => {
 
     return currentLineIndex;
   };
-
-  console.log(computedShipBelongLine(mainShipCo));
 };
 
 onMounted(() => {

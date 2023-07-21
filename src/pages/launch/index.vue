@@ -10,7 +10,7 @@ import { BasicPageEnum } from '@/enums/pageEnum';
 
 const userStore = useUserStore();
 if (userStore.isLogin) {
-  uni.redirectTo({
+  uni.switchTab({
     url: BasicPageEnum.HOME
   });
 } else {

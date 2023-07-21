@@ -17,12 +17,45 @@
     },
     // 首页
     {
-      "path": "pages/index/index",
+      "path": "pages/plan/index",
       "style": {
         "navigationStyle": "custom"
       }
     }
   ],
+  "tabBar": {
+    "color": "#404040",
+    "selectedColor": "#052990",
+    "backgroundColor": "#ffffff",
+    "iconWidth": "18px",
+    "fontSize": "12px",
+    "list": [
+      {
+        "pagePath": "pages/plan/index",
+        "text": "执行计划",
+        "iconPath": "static/images/tabBar/plan.png",
+        "selectedIconPath": "static/images/tabBar/plan-hl.png"
+      },
+      {
+        "pagePath": "pages/plan/index",
+        "text": "消息通知",
+        "iconPath": "static/images/tabBar/message.png",
+        "selectedIconPath": "static/images/tabBar/message-hl.png"
+      },
+      {
+        "pagePath": "pages/plan/index",
+        "text": "违章记录",
+        "iconPath": "static/images/tabBar/violation.png",
+        "selectedIconPath": "static/images/tabBar/violation-hl.png"
+      },
+      {
+        "pagePath": "pages/plan/index",
+        "text": "异常申报",
+        "iconPath": "static/images/tabBar/report.png",
+        "selectedIconPath": "static/images/tabBar/report-hl.png"
+      }
+    ]
+  },
   "globalStyle": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "uni-app",

@@ -4,8 +4,3 @@ export interface UserState {
   user: Nullable<Recordable>;
   token: Nullable<string>;
 }
-
-/* plan module */
-export interface PlanState {
-  planInfo: Recordable | null;
-}

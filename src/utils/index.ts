@@ -1,3 +1,9 @@
+export function rpx2px(rpx: number) {
+  const baseScreenWidth = 750;
+  const { windowWidth } = uni.getSystemInfoSync();
+  return (rpx / baseScreenWidth) * windowWidth;
+}
+
 /**
  * 从路径或URL中解析文件名
  * @param path 路径或URL

@@ -4,9 +4,10 @@ import { getEnv } from '@/utils/env';
 import { useUserStore } from '@/store/modules/user';
 import { uniRequestConfig, defaultRequestOptions } from './config';
 import { ContentTypeEnum } from '@/enums/httpEnum';
+import { BasicPageEnum } from '@/enums/pageEnum';
 import qs from 'qs';
 
-export const request = async (
+export const httpRequest = async (
   config: UniNamespace.RequestOptions,
   customOptions: CustomOptions = {}
 ) => {
@@ -24,7 +25,8 @@ export const request = async (
   const userStore = useUserStore();
   const customToken = fullOptions.customToken;
   if (fullOptions.auth && (userStore.isLogin || customToken)) {
-    header[fullOptions.authHeader] = customToken ? customToken : userStore.getToken;
+    const token = customToken ? customToken : userStore.getToken;
+    header[fullOptions.authHeader] = `Bearer ${String(token)}`;
   }
 
   // handle ContentType
@@ -33,22 +35,18 @@ export const request = async (
     data = qs.stringify(data, { arrayFormat: 'brackets' });
   }
 
-  try {
-    const response = await uni.request({
-      url,
-      method,
-      data,
-      header
-    });
+  const response = await uni.request({
+    url,
+    method,
+    data,
+    header
+  });
 
-    if (fullOptions.validateCustomStatus(response)) {
-      return response;
-    } else {
-      handleResponseError(response, fullOptions);
-      throw response;
-    }
-  } catch (error) {
-    throw error;
+  if (fullOptions.validateCustomStatus(response)) {
+    return response.data;
+  } else {
+    handleResponseError(response, fullOptions);
+    throw response;
   }
 };
 
@@ -57,7 +55,9 @@ const handleResponseError = (response: any, customOptions: Required<CustomOption
   if (code === 10001) {
     const userStore = useUserStore();
     userStore.logout();
-    // router.push(BasicPageEnum.LOGIN);
+    uni.reLaunch({
+      url: BasicPageEnum.LOGIN
+    });
   }
   const handleCustomError = customOptions.handleCustomError;
 

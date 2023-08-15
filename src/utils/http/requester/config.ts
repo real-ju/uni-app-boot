@@ -15,10 +15,17 @@ export const defaultRequestOptions: Required<CustomOptions> = {
   // 如果validateCustomStatus返回true，则Promise将会resolved，否则是rejected
   validateCustomStatus: function (response) {
     const statusCode = response.statusCode;
-    return statusCode && statusCode === 200;
+    return statusCode === 200 && response.data && +response.data.code === 0;
   },
   // 处理自定义错误 validateCustomStatus返回false时执行
-  handleCustomError: function (response) {},
+  handleCustomError: function (response) {
+    const message = response.data && response.data.message;
+    message &&
+      uni.showToast({
+        title: message,
+        icon: 'none'
+      });
+  },
   // 显示自定义错误提示
   showCustomErrorTip: true
 };

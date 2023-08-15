@@ -5,7 +5,7 @@ export enum BasicPageEnum {
   // 登录
   LOGIN = '/pages/login/index',
   // 首页
-  HOME = '/pages/plan/index'
+  HOME = '/pages/xxx/index'
 }
 
 /**
@@ -13,7 +13,7 @@ export enum BasicPageEnum {
  */
 export enum ExceptionPageEnum {
   // 404 未找到页面
-  EXCEPTION_404 = '/404',
+  EXCEPTION_404 = '/pages/exception/404',
   // 403 未授权
-  EXCEPTION_403 = '/403'
+  EXCEPTION_403 = '/pages/exception/403'
 }

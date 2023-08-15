@@ -1,7 +1,7 @@
 {
   "pages": [
     // pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-    // 应用名
+    // 启动页
     {
       "path": "pages/launch/index",
       "style": {
@@ -11,13 +11,6 @@
     // 登录
     {
       "path": "pages/login/index",
-      "style": {
-        "navigationStyle": "custom"
-      }
-    },
-    // 首页
-    {
-      "path": "pages/plan/index",
       "style": {
         "navigationStyle": "custom"
       }
@@ -31,28 +24,8 @@
     "fontSize": "12px",
     "list": [
       {
-        "pagePath": "pages/plan/index",
-        "text": "执行计划",
-        "iconPath": "static/images/tabBar/plan.png",
-        "selectedIconPath": "static/images/tabBar/plan-hl.png"
-      },
-      {
-        "pagePath": "pages/plan/index",
-        "text": "消息通知",
-        "iconPath": "static/images/tabBar/message.png",
-        "selectedIconPath": "static/images/tabBar/message-hl.png"
-      },
-      {
-        "pagePath": "pages/plan/index",
-        "text": "违章记录",
-        "iconPath": "static/images/tabBar/violation.png",
-        "selectedIconPath": "static/images/tabBar/violation-hl.png"
-      },
-      {
-        "pagePath": "pages/plan/index",
-        "text": "异常申报",
-        "iconPath": "static/images/tabBar/report.png",
-        "selectedIconPath": "static/images/tabBar/report-hl.png"
+        "pagePath": "pages/login/index",
+        "text": "登陆"
       }
     ]
   },
@@ -64,8 +37,7 @@
   },
   "easycom": {
     "custom": {
-      "^u-(.*)": "uview-plus/components/u-$1/u-$1.vue",
-      "^be-(.*)": "@/behaviors-ui/components/be-$1/index.vue"
+      "^u-(.*)": "uview-plus/components/u-$1/u-$1.vue"
     }
   }
 }

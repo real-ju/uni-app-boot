@@ -2,8 +2,8 @@ import type { App } from 'vue';
 import { createPinia } from 'pinia';
 import { createPersistedState } from 'pinia-plugin-persistedstate';
 
-export const pinia = createPinia();
-pinia.use(
+export const store = createPinia();
+store.use(
   createPersistedState({
     storage: {
       getItem: (key: string) => {
@@ -17,5 +17,5 @@ pinia.use(
 );
 
 export function setupStore(app: App) {
-  app.use(pinia);
+  app.use(store);
 }

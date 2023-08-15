@@ -1,6 +1,8 @@
 import type { UserState } from '#/store';
 
 import { defineStore } from 'pinia';
+import { store } from '@/store';
+// import { login } from '@/api/auth';
 
 export const useUserStore = defineStore({
   id: 'user',
@@ -18,10 +20,9 @@ export const useUserStore = defineStore({
     }
   },
   actions: {
-    login(user: Recordable, token: string) {
-      this.user = user;
-      this.token = token;
-      this.isLogin = true;
+    async login(params: Recordable) {
+      // const res = await login(params);
+      // return res;
     },
     logout() {
       this.user = null;
@@ -31,3 +32,8 @@ export const useUserStore = defineStore({
   },
   persist: { key: 'pinia-persistedstate-user' }
 });
+
+// Need to be used outside the setup
+export function useUserStoreWithOut() {
+  return useUserStore(store);
+}

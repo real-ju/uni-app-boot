@@ -23,15 +23,18 @@ export default ({ mode }: ConfigEnv): UserConfig => {
     },
     plugins: createVitePlugins(viteEnv),
     server: {
-      // host: true,
-      host: '0.0.0.0',
+      host: true,
+      // host: '0.0.0.0',
       proxy: {
         '/api': {
           target: viteEnv.VITE_DEV_SERVER_PROXY,
-          changeOrigin: true,
-          rewrite: (path) => path.replace(/^\/api/, '')
+          changeOrigin: true
+          // rewrite: (path) => path.replace(/^\/api/, '')
         }
       }
+    },
+    define: {
+      'process.env.VITE_ENV': viteEnv
     }
   };
 };

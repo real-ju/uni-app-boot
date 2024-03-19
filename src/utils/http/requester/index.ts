@@ -14,7 +14,7 @@ export const httpRequest = async (
   config = { ...uniRequestConfig, ...config };
   const fullOptions: Required<CustomOptions> = { ...defaultRequestOptions, ...customOptions };
 
-  let { url, method, data, header } = config;
+  let { url, method, data, header, ...restConfig } = config;
   header = header || {};
 
   // handle baseURL
@@ -39,7 +39,8 @@ export const httpRequest = async (
     url,
     method,
     data,
-    header
+    header,
+    ...restConfig
   });
 
   if (fullOptions.validateCustomStatus(response)) {

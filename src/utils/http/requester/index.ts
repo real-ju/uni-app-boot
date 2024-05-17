@@ -51,6 +51,39 @@ export const httpRequest = async (
   }
 };
 
+export const uploadFile = async (
+  config: UniNamespace.UploadFileOption,
+  customOptions: CustomOptions = {}
+) => {
+  const fullOptions: Required<CustomOptions> = { ...defaultRequestOptions, ...customOptions };
+  let { url, header, ...restConfig } = config;
+  header = header || {};
+
+  // handle baseURL
+  const baseURL = getEnv().VITE_API_BASE_URL;
+  url = baseURL + url;
+
+  // handle token
+  const userStore = useUserStore();
+  const customToken = fullOptions.customToken;
+  if (fullOptions.auth && (userStore.isLogin || customToken)) {
+    const token = customToken ? customToken : userStore.getToken;
+    header[fullOptions.authHeader] = `Bearer ${String(token)}`;
+  }
+
+  const response = await uni.uploadFile({
+    url,
+    header,
+    ...restConfig
+  });
+
+  if (response.statusCode === 200 && typeof response.data === 'string') {
+    return JSON.parse(response.data);
+  } else {
+    return response;
+  }
+};
+
 const handleResponseError = (response: any, customOptions: Required<CustomOptions>): void => {
   const code = +response.data.code;
   if (code === 10001) {
